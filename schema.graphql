@@ -18,3 +18,15 @@ type User @entity {
   id: ID!
   tokens: [Token!]! @derivedFrom(field: "owner")
 }
+
+type _Schema_
+  @fulltext(
+    name: "ApeSearch"
+    language: en
+    algorithm: rank
+    include: [{entity: "Token", fields:
+      [{ name: "background" }, { name: "eyes" }, { name: "mouth" }, 
+      { name: "clothes" }, { name: "fur" }, { name: "hat" },
+       { name: "earring" }
+    ] }]
+  )
